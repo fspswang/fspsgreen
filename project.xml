@@ -171,7 +171,7 @@
     <NavbarItem>
       <Title>數位學習</Title>
       <IsDropdown>false</IsDropdown>
-      <Url>https://web.fsps.ntpc.edu.tw/%E6%95%B8%E4%BD%8D%E5%AD%B8%E7%BF%92</Url>
+      <Url>https://sites.google.com/fsps.ntpc.edu.tw/backup/%E6%95%B8%E4%BD%8D%E5%AD%B8%E7%BF%92</Url>
       <NewWindow>true</NewWindow>
       <SubItems />
     </NavbarItem>
