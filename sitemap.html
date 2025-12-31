@@ -89,39 +89,56 @@
     
 /* Carousel (RWD 修正版 V3 - 強力 Hover 隱藏版) */
     .carousel-container { position: relative; max-width: 100%; margin: auto; overflow: hidden; border-radius: 5px; min-height: 200px; }
-    .carousel-inner { display: flex; width: 100%; justify-content: center; }
     
-    .carousel-item { 
-        display: none; 
-        width: 100%; 
-        max-width: 100%;
-        flex: 0 0 100%; 
-        min-height: 200px; 
-        flex-shrink: 0; 
-        animation-name: fade; 
-        animation-duration: 1.5s; 
-        box-sizing: border-box; 
-        text-align: center;
-        position: relative; /* 必須為 relative 以便文字絕對定位 */
+    /* 預設隱藏捲軸 */
+    .carousel-list {
+        display: flex; 
+        overflow-x: auto; 
+        scroll-snap-type: x mandatory; 
+        list-style: none; 
+        padding: 0; 
+        margin: 0;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE 10+ */
     }
-    .carousel-item.active { display: block; }
-    .carousel-item img { width: 100%; height: 200px; object-fit: contain; border-radius: 3px; display: block; margin: 0 auto; }
+    .carousel-list::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
+
+    /* 預設手機版: 100% 寬度 */
+    .carousel-item { 
+        flex: 0 0 100%; 
+        width: 100%;
+        scroll-snap-align: start; 
+        box-sizing: border-box; 
+        padding: 5px;
+        position: relative; /* 關鍵：讓絕對定位的標題可以參考此容器 */
+    }
+
+    /* 電腦版 3 欄: 33.2% 寬度 (微調以避免捲軸) */
+    @media (min-width: 901px) {
+        .carousel-container.cols-3 .carousel-item { 
+            flex: 0 0 33.2%; 
+            width: 33.2%; 
+        }
+    }
 
     /* --- 修改重點：強制隱藏並在 Hover 時顯示 --- */
+    /* 使用 !important 覆蓋原本在 HTML 裡的 inline style */
     .carousel-item .carousel-caption { 
         position: absolute !important; 
         bottom: 0 !important; 
         left: 0 !important; 
         width: 100% !important; 
-        background: rgba(0, 0, 0, 0.7) !important; 
-        color: #fff !important; 
+        background: rgba(0, 0, 0, 0.7) !important; /* 半透明黑色背景 */
+        color: #fff !important; /* 白色文字 */
         padding: 10px !important; 
         font-size: 1.1em !important; 
         margin: 0 !important;
-        opacity: 0 !important; /* 強制預設透明度為 0 */
+        opacity: 0 !important; /* 強制預設透明度為 0 (隱藏) */
         transition: opacity 0.3s ease-in-out !important; 
-        pointer-events: none; 
+        pointer-events: none; /* 避免文字區塊擋住圖片點擊 */
         z-index: 10;
+        box-sizing: border-box;
+        text-align: center !important; /* ★★★ 新增：文字置中 ★★★ */
     }
 
     /* 當滑鼠移到圖片或項目上時，文字強制浮現 */
@@ -136,12 +153,12 @@
     .prev { left: 0; border-radius: 0 3px 3px 0; } .next { right: 0; border-radius: 3px 0 0 3px; }
     .pause-btn { position: absolute; bottom: 10px; right: 10px; background-color: rgba(0,0,0,0.5); color: #fff; border: 1px solid #fff; border-radius: 5px; padding: 5px 10px; cursor: pointer; font-size: 0.9em; z-index: 102; }
     .pause-btn:hover, .pause-btn:focus { background-color: #000; outline: 2px solid yellow; }
+    
     .dots-container { text-align: center; padding: 10px; }
     .dot { cursor: pointer; height: 12px; width: 12px; margin: 0 4px; background-color: #bbb; border-radius: 50%; border: none; display: inline-block; transition: background-color 0.6s ease; padding: 0; }
     .dot.active, .dot:hover, .dot:focus { background-color: #717171; outline: 2px solid blue; }
-    .fade { animation-name: fade; animation-duration: 1.5s; } @keyframes fade { from {opacity: .4} to {opacity: 1} }
 
-    /* Marquee */
+    /* Marquee & Accordion (保留不變) */
     .marquee-container { position: relative; overflow: hidden; background: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 5px 5px 5px 90px; display: flex; align-items: center; height: 40px; }
     .marquee-controls { position: absolute; left: 0; top: 0; bottom: 0; width: 85px; background: #fff; color: #6A5ACD; z-index: 10; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9em; border-right: 1px solid #eee; }
     .marquee-btn { background: #fff; border: 1px solid #6A5ACD; color: #6A5ACD; cursor: pointer; font-size: 0.8em; padding: 2px 5px; margin-left: 5px; border-radius: 3px; }
@@ -154,7 +171,6 @@
     .marquee-item::before { content: '📢 '; margin-right: 3px; }
     @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-    /* Accordion */
     .link-list-container { list-style: none; padding: 0; margin: 0; }
     .link-list-entry { margin-bottom: 5px; }
     .single-link { display: block; text-decoration: none; color: #333; background-color: #fff; border: 1px solid #ddd; padding: 12px 15px; border-radius: 5px; transition: all 0.2s; }
@@ -171,35 +187,10 @@
     .sub-link-item a::before { content: '↳'; position: absolute; left: 15px; color: #999; font-size: 0.9em; }
     .sub-link-item:last-child a { border-bottom: none; }
 
-    /* 內頁專用 CSS */
-    .inner-wrapper { max-width: 1200px; margin: 2em auto; padding: 20px; background: #fff; min-height: 500px; display: flex; flex-direction: column; }
-    .breadcrumb { padding: 10px 0; margin-bottom: 20px; border-bottom: 1px solid #eee; font-size: 0.9em; color: #666; }
-    .breadcrumb a { color: #6A5ACD; text-decoration: none; } .breadcrumb a:hover { text-decoration: underline; }
-    .page-title { font-size: 2em; color: #333; margin: 0 0 20px 0; border-left: 5px solid #6A5ACD; padding-left: 15px; line-height: 1.2; }
-    .page-content { font-size: 1.1em; line-height: 1.8; color: #333; }
-    .page-content img { max-width: 100%; height: auto; }
-    .page-content table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-    .page-content th, .page-content td { border: 1px solid #ddd; padding: 8px; }
-    .page-content th { background-color: #f2f2f2; color: #333; text-align: center; }
-
-/* 處室介紹專用樣式 */
-.dept-nav { margin-bottom: 20px; text-align: center; }
-.dept-buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-.dept-btn { 
-    padding: 10px 20px; background-color: #004080; color: white; border: none; 
-    border-radius: 5px; cursor: pointer; min-width: 120px; font-size: 1.1em;
-}
-.dept-btn.active { background-color: #b30000; }
-.dept-content { 
-    display: none; background: #fff; padding: 20px; border-radius: 10px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 20px; 
-}
-.dept-content.active { display: block; animation: deptFadeIn 0.5s; }
-@keyframes deptFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
     .footer { background: #333; color: #fff; text-align: center; padding: 2em; margin-top: auto; }
     .footer a { color: #fff; text-decoration: underline; } .footer a:hover { color: #ccc; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    
     @media (max-width: 900px) {
         .school-title-cn { font-size: 1.8em; } .school-title-en { font-size: 1em; }
         .header-left { width: 80%; } .school-logo { height: 60px; margin-right: 10px; }
@@ -214,8 +205,6 @@
         .container { flex-direction: column; }
         .col-left, .col-center, .col-right { width: 100%; order: 0; flex: 1 1 100%; }
         .col-center { order: 1; } .col-left { order: 2; } .col-right { order: 3; }
-        .col-row { flex-direction: column; padding: 10px; } .col-row-item { width: 100%; margin-bottom: 10px; }
-        .block-card.half-width { width: 100%; }
         .sitemap-list { flex-direction: column; }
     }
 </style>
@@ -570,6 +559,10 @@
 <li><div class="acc-row"><a href="https://sites.google.com/fsps.ntpc.edu.tw/fsps-show/" target="_blank" title="復興點點名 (另開新視窗)">復興點點名</a></div>
 </li>
 <li><div class="acc-row"><a href="https://sites.google.com/fsps.ntpc.edu.tw/111fsps-parenting-education/%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2%E4%B8%AD%E5%BF%83%E7%B6%B2%E7%AB%99" target="_blank" title="家庭教育專區 (另開新視窗)">家庭教育專區</a></div>
+</li>
+<li><div class="acc-row"><a href="https://drive.google.com/drive/folders/1s08dbUBKP4bk1oCDTFNuy0rehGJ_P2sh" target="_blank" title="場地租借法規 (另開新視窗)">場地租借法規</a></div>
+</li>
+<li><div class="acc-row"><a href="https://drive.google.com/drive/folders/1H97RkNTOzF9qcchjo3Won3l4dgUFwSNp" target="_blank" title="場地租借表格 (另開新視窗)">場地租借表格</a></div>
 </li>
 </ul></div></li>
 </ul>
