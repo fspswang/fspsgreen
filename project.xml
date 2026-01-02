@@ -411,7 +411,7 @@
       <SectionTitleColor>#FFFFFF</SectionTitleColor>
       <SectionTitleBackgroundColor>#6A5ACD</SectionTitleBackgroundColor>
       <IsTitleHidden>false</IsTitleHidden>
-      <IsTitleCentered>false</IsTitleCentered>
+      <IsTitleCentered>true</IsTitleCentered>
       <IsBlockHidden>false</IsBlockHidden>
       <IsHalfWidth>false</IsHalfWidth>
       <IsCarouselThreeCols>false</IsCarouselThreeCols>
@@ -590,7 +590,7 @@
       <SectionTitleColor>#FFFFFF</SectionTitleColor>
       <SectionTitleBackgroundColor>#6A5ACD</SectionTitleBackgroundColor>
       <IsTitleHidden>false</IsTitleHidden>
-      <IsTitleCentered>false</IsTitleCentered>
+      <IsTitleCentered>true</IsTitleCentered>
       <IsBlockHidden>false</IsBlockHidden>
       <IsHalfWidth>false</IsHalfWidth>
       <IsCarouselThreeCols>false</IsCarouselThreeCols>
@@ -969,7 +969,7 @@
       <SectionTitleColor>#FFFFFF</SectionTitleColor>
       <SectionTitleBackgroundColor>#6A5ACD</SectionTitleBackgroundColor>
       <IsTitleHidden>false</IsTitleHidden>
-      <IsTitleCentered>false</IsTitleCentered>
+      <IsTitleCentered>true</IsTitleCentered>
       <IsBlockHidden>false</IsBlockHidden>
       <IsHalfWidth>false</IsHalfWidth>
       <IsCarouselThreeCols>false</IsCarouselThreeCols>
@@ -1442,7 +1442,7 @@
       <SectionTitleColor>#FFFFFF</SectionTitleColor>
       <SectionTitleBackgroundColor>#6A5ACD</SectionTitleBackgroundColor>
       <IsTitleHidden>false</IsTitleHidden>
-      <IsTitleCentered>false</IsTitleCentered>
+      <IsTitleCentered>true</IsTitleCentered>
       <IsBlockHidden>false</IsBlockHidden>
       <IsHalfWidth>false</IsHalfWidth>
       <IsCarouselThreeCols>false</IsCarouselThreeCols>
@@ -2132,7 +2132,7 @@
       <SectionTitleColor>#FFFFFF</SectionTitleColor>
       <SectionTitleBackgroundColor>#6A5ACD</SectionTitleBackgroundColor>
       <IsTitleHidden>false</IsTitleHidden>
-      <IsTitleCentered>false</IsTitleCentered>
+      <IsTitleCentered>true</IsTitleCentered>
       <IsBlockHidden>false</IsBlockHidden>
       <IsHalfWidth>false</IsHalfWidth>
       <IsCarouselThreeCols>false</IsCarouselThreeCols>
@@ -2318,7 +2318,7 @@
       <SectionTitleColor>#FFFFFF</SectionTitleColor>
       <SectionTitleBackgroundColor>#6A5ACD</SectionTitleBackgroundColor>
       <IsTitleHidden>false</IsTitleHidden>
-      <IsTitleCentered>false</IsTitleCentered>
+      <IsTitleCentered>true</IsTitleCentered>
       <IsBlockHidden>false</IsBlockHidden>
       <IsHalfWidth>false</IsHalfWidth>
       <IsCarouselThreeCols>false</IsCarouselThreeCols>
@@ -2502,7 +2502,7 @@
           <SubItems />
         </ContentItem>
         <ContentItem>
-          <Title>1953教育部防制校園霸凌專區</Title>
+          <Title>教育部人力資源2.0</Title>
           <Url>https://9hr.k12ea.gov.tw/</Url>
           <NewWindow>true</NewWindow>
           <ImageUrl />
